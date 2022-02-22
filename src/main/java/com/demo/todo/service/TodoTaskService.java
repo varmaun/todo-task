@@ -21,4 +21,10 @@ public interface TodoTaskService {
 
 	UserTask updateUserTask(UserTaskModel userTask);
 
+	TodoTask getTaskbyId(Long taskId);
+
+	void deleteUserTask(UserTaskModel userTaskModel);
+
+	void deleteTask(TodoTask task);
+
 }

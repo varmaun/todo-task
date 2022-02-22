@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,12 @@ public class TaskController {
 
 		return taskService.getTasksList();
 	}
+	
+	@GetMapping("/task/{taskId}")
+	public TodoTask todoTask(@PathVariable Long taskId) {
+
+		return taskService.getTaskbyId(taskId);
+	}
 
 	@GetMapping("/taskListByUser/{userId}")
 	public List<TodoTask> getTasksbyUser(@PathVariable String userId) {
@@ -51,6 +58,11 @@ public class TaskController {
 		return new ResponseEntity<TodoTask>(task, HttpStatus.CREATED);
 	}
 
+	@DeleteMapping(value = "/task/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteTask(@RequestBody TodoTask task) {
+		taskService.deleteTask(task);
+	}
+	
 	@PostMapping(value = "/userTask/create", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<UserTask> createUserTask(@RequestBody UserTaskModel userTaskModel) {
@@ -65,4 +77,8 @@ public class TaskController {
 		return new ResponseEntity<UserTask>(userTask, HttpStatus.CREATED);
 	}
 
+	@DeleteMapping(value="/userTask/Delete")
+	public void deleteUserTask(@RequestBody UserTaskModel userTaskModel) {
+		taskService.deleteUserTask(userTaskModel);
+	}
 }

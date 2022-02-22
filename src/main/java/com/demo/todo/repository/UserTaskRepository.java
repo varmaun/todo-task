@@ -10,7 +10,11 @@ import com.demo.todo.domain.UserTask;
 
 public interface UserTaskRepository extends JpaRepository<UserTask, Serializable>{
 
-	@Query("SELECT DISTINCT task FROM UserTask task WHERE task.user.id=?1")
-	List<UserTask> findTasksByUserId(Long userId);
+	/*
+	 * @Query("SELECT DISTINCT task FROM UserTask task WHERE task.user.id=?1")
+	 * List<UserTask> findTasksByUserId(Long userId);
+	 */
+	@Query("SELECT DISTINCT task FROM UserTask task WHERE task.user.id=?2 and task.task.id=?1")
+	UserTask findByUserTaskId(Long taskId, Long userId);
 
 }

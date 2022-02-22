@@ -21,8 +21,8 @@ import lombok.NonNull;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+//@AllArgsConstructor
+//@Data
 public class TodoTask implements java.io.Serializable{
 
 	/**
@@ -57,6 +57,91 @@ public class TodoTask implements java.io.Serializable{
 		this.userTasks = userTasks;
 	}
 
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the taskName
+	 */
+	public String getTaskName() {
+		return taskName;
+	}
+
+	/**
+	 * @param taskName the taskName to set
+	 */
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the createdDate
+	 */
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	/**
+	 * @return the updatedDate
+	 */
+	public LocalDateTime getUpdatedDate() {
+		return updatedDate;
+	}
+
+	/**
+	 * @param updatedDate the updatedDate to set
+	 */
+	public void setUpdatedDate(LocalDateTime updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	/**
+	 * @return the userTasks
+	 */
+	public Set<UserTask> getUserTasks() {
+		return userTasks;
+	}
+
+	/**
+	 * @param userTasks the userTasks to set
+	 */
+	public void setUserTasks(Set<UserTask> userTasks) {
+		this.userTasks = userTasks;
+	}
+
+	
 
 
 }

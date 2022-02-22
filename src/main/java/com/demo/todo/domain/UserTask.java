@@ -18,27 +18,28 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+//@AllArgsConstructor
+//@Data
 public class UserTask implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
 	private TodoUser user;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "task_id", nullable = false)
 	private TodoTask task;
-	
+
 	@Column
 	private String status;
+
 	
 	public UserTask(TodoUser user, TodoTask task, String status) {
 		super();
@@ -46,7 +47,61 @@ public class UserTask implements java.io.Serializable {
 		this.task = task;
 		this.status = status;
 	}
-	
-	
-	
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public TodoUser getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(TodoUser user) {
+		this.user = user;
+	}
+
+	/**
+	 * @return the task
+	 */
+	public TodoTask getTask() {
+		return task;
+	}
+
+	/**
+	 * @param task the task to set
+	 */
+	public void setTask(TodoTask task) {
+		this.task = task;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 }
